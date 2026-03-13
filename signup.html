@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <h1><img src="images/Curvagelogo.png" alt="この学習アプリ'Curvage'のロゴ"></h1>
+    <button id="log-out">ログアウト</button>
+  </header>
+  <main>
+    <div id="applyspace">
+      <form id="apply">
+        <dl>
+          <dt><label for="add-words">Word</label></dt>
+          <dd><input type="text" name="words" id="add-words" placeholder="単語を入力…" required></dd>
+        </dl>
+        <dl>
+          <dt><label for="add-meanings">Meanings</label></dt>
+          <dd><input type="text" name="meanings" id="add-meanings" placeholder="意味を入力…" required></dd>
+        </dl>
+        <div><input type="submit" id="register" value="登録"></div>
+      </form>
+      <p>例: curve - 曲線</p>
+    </div>
+    <select name="filter" id="filter">
+      <option value="all">すべて</option>
+      <option value="weak">苦手なもの</option>
+      <option value="forget">今日復習すべきもの</option>
+    </select>
+    <select name="type" id="type">
+      <option value="all">すべて</option>
+      <option value="word">単語</option>
+      <option value="phrase">イディオム</option>
+    </select>
+    <span id="total"></span>
+    <button id="prev-btn">前へ</button>
+    <input type="text" id="pc-only" mode="numeric" >
+    <select id="select"></select>
+    <button id="next-btn">次へ</button>
+  <!-- 学習したフレーズを表形式で表示 -->
+    <table>
+      <thead>
+        <tr>
+          <th>Target / Vocab</th>
+          <th>意味</th>
+          <th>状態</th>
+          <th>登録日</th>
+          <th>削除</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+
+      </tbody>
+    </table>
+  </main>
+  <div id="modal-signup">
+    <div id="signup-content">
+      <form id="signup-form">
+        <p>Sign Up</p>
+        <dl>
+          <dt><label for="name">ユーザー名</label></dt>
+          <dd><input type="text" name="username" id="username" placeholder="Enter Your Username"></dd>
+        </dl>
+        <dl>
+          <dt><label for="password">パスワード</label></dt>
+          <dd><input type="password" name="password" id="password" placeholder="Enter Your Password"></dd>
+        </dl>
+        <dl>
+          <dt><label for="repassword">パスワード(確認用)</label></dt>
+          <dd><input type="password" name="repassword" id="repassword" placeholder="Enter Your Password"></dd>
+        </dl>
+        <span id="sign-status"></span>
+        <button type="submit" id="signup-sub"><span id="btntxt">Sign Up</span><div id="spinner"></div><span id="checkicon"></span></button>
+      </form>
+    </div>
+  </div>
+  <script src="js/signup.js"></script>
+</body>
+</html>
