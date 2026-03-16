@@ -63,19 +63,43 @@ async function initapp() {
     RefreshUI();
   }
 //すべて、苦手なもの、今日復習すべきもの(後述の忘却曲線に基づく)のフィルター機能
+  // let filter = document.getElementById('filter');
+  // filter.onchange = (e) => {
+  //   CurrentFilter = e.target.value;
+  //   CurrentPage = 1;
+  //   RefreshUI();
+  // }
   let filter = document.getElementById('filter');
-  filter.onchange = (e) => {
-    CurrentFilter = e.target.value;
-    CurrentPage = 1;
-    RefreshUI();
+  filter.onclick = () => {
+    filter.classList.toggle('is-open');
   }
-//すべて、単語、熟語のフィルター機能
-  let type = document.getElementById('type');
-  type.onchange = (e) => {
-    CurrentType = e.target.value;
-    CurrentPage = 1;
-    RefreshUI();
+  window.onclick= (e) => {
+    if (filter.classList.contains('is-open')) {
+    if (!filter.contains(e.target)) {
+        filter.classList.remove('is-open')
+      }
+    }
   }
+  let selectfilter = document.querySelectorAll('.options');
+  let currentvalue = document.querySelector('.currentvalue');
+  selectfilter.forEach((e) => {
+    e.addEventListener('click', () => {
+      currentvalue.innerHTML = e.textContent;
+      CurrentFilter = e.dataset.value;
+      CurrentPage = 1;
+      RefreshUI();
+    })
+  })
+  //すべて、単語、熟語のフィルター機能
+  let type = document.querySelectorAll('input[type="radio"]');
+  type.forEach((e) => {
+    e.addEventListener('change', () => {
+      CurrentType = e.value;
+      CurrentPage = 1;
+      RefreshUI();
+    })
+  })
+
 //最初の表示
   RefreshUI();
 //データ登録用のイベント登録
