@@ -2,6 +2,14 @@
 session_start();
 require_once('dbconnect.php');
 
+if (empty($_POST['words']) || empty($_POST['meanings'])) {
+  exit();
+}
+
+if (mb_strlen($_POST['words']) > 100 || mb_strlen($_POST['meanings']) > 100) {
+  exit();
+}
+
 $now = date('Y-m-d H:i:s');
 
 $words = $_POST['words'];

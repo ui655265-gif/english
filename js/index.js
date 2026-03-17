@@ -4,7 +4,7 @@ let CurrentFilter = 'all';
 let CurrentType = 'all';
 const dbUpdateTimers = {};
 let Allitems = [];
-let prev, next, Jump, MaxPage, select, LogCheck;
+let prev, next, Jump, MaxPage, LogCheck;
 window.onload = async function () {
   // ログインするイベント登録
   const login = document.getElementById('log-form');
@@ -55,27 +55,38 @@ async function initapp() {
     CurrentPage = NewPage;
     RefreshUI();
   }
+//最初の表示
+  RefreshUI();
 //スマホ用の選択してページジャンプ
-  select = document.getElementById('select');
-  select.onchange = (e) => {
-    let NewPage = parseInt(e.target.value);
-    CurrentPage = NewPage;
-    RefreshUI();
+  let selectpage = document.getElementById('selectpage');
+  selectpage.onclick = () => {
+    selectpage.classList.toggle('page-open');
   }
+  let selected = document.getElementById('selected');
+  
+  let select = document.getElementById('select');
+  select.addEventListener('click', (e) => {
+    let changepage = e.target.closest('.pageoptions');
+    if (!changepage) return;
+    selected.textContent = changepage.textContent;
+    CurrentPage = parseInt(changepage.dataset.value);
+    console.log(changepage.dataset.value);
+    RefreshUI();
+  })
+  
 //すべて、苦手なもの、今日復習すべきもの(後述の忘却曲線に基づく)のフィルター機能
-  // let filter = document.getElementById('filter');
-  // filter.onchange = (e) => {
-  //   CurrentFilter = e.target.value;
-  //   CurrentPage = 1;
-  //   RefreshUI();
-  // }
   let filter = document.getElementById('filter');
   filter.onclick = () => {
     filter.classList.toggle('is-open');
   }
   window.onclick= (e) => {
-    if (filter.classList.contains('is-open')) {
-    if (!filter.contains(e.target)) {
+    if (filter.classList.contains('is-open') || selectpage.classList.contains('page-open')) {
+      if (!filter.contains(e.target) && !selectpage.contains(e.target)) {
+        filter.classList.remove('is-open')
+        selectpage.classList.remove('page-open')
+      } else if (filter.contains(e.target)) {
+        selectpage.classList.remove('page-open')
+      } else if (selectpage.contains(e.target)) {
         filter.classList.remove('is-open')
       }
     }
@@ -100,8 +111,6 @@ async function initapp() {
     })
   })
 
-//最初の表示
-  RefreshUI();
 //データ登録用のイベント登録
   const apply = document.getElementById('apply')
   apply.addEventListener('submit', HandleFormData);
@@ -115,6 +124,12 @@ async function initapp() {
   // ログアウト機能
   const logout = document.getElementById('log-out');
   logout.addEventListener('click', LogOut);
+  const mediaquery768 = window.matchMedia('(max-width:768px)')
+  mediaquery768.addEventListener('change', Widthchange768)
+  const mediaquery480 = window.matchMedia('(max-width:480px)')
+  mediaquery480.addEventListener('change', Widthchange480)
+  Widthchange768(mediaquery768);
+  Widthchange480(mediaquery480);
 }
 //データ読み取りの関数
 async function loadenglish() {
@@ -211,16 +226,17 @@ function RefreshUI() {
   const info = tableset(filtered);
   MaxPage = info.maxPage;
   //スマホ用の選択ページジャンプの選択肢作成
+  let select = document.getElementById('select');
   select.innerHTML = '';
   for (let i = 1; i <= MaxPage; i++) {
-    let selectHtml = `<option value="${i}">${i}</option>`;
+    let selectHtml = `<li class="pageoptions" data-value="${i}">${i}</li>`;
     select.innerHTML += selectHtml;
   }
   let total = document.getElementById('total');
   total.textContent = `全${info.total}件`;
   //現在のページ表示
   if (Jump) Jump.value = CurrentPage;
-  if (select) select.value = CurrentPage;
+  selected.textContent = CurrentPage;
 
   let rows = document.querySelectorAll('tbody tr');
   Fadein(rows);
@@ -489,3 +505,19 @@ function h(s) {
   return s.replace(/[&<>'"]/g, c => 
     `&#${c.charCodeAt(0)};`);
 }
+function Widthchange768(e) {
+  if (e.matches) {
+    next.textContent = '';
+    prev.textContent = '';
+  } else {
+    next.textContent = '次へ';
+    prev.textContent = '前へ';
+  }
+} function Widthchange480(e) {
+  const colgroup = document.getElementById('colgroup');
+  if (e.matches) {
+    colgroup.innerHTML = '<col style="width: 34%;"><col style="width: 34%;"><col style="width:20%;"><col style="width:18%;">'
+  } else {
+    colgroup.innerHTML = '<col style="width: 25%;"><col style="width: 25%;"><col style="width:20%;"><col style="width:18%;"><col style="width: 12%;"></col>'
+  }
+} 

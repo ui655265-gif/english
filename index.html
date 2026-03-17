@@ -29,12 +29,6 @@
       <p>例: curve - 曲線</p>
     </div>
     <div class="filter-content">
-      <!-- <select name="filter" id="filter">
-        <option value="all">すべて</option>
-        <option value="learning">学習中</option>
-        <option value="weak">苦手なもの</option>
-        <option value="forget">要復習</option>
-      </select> -->
       <div id="filter">
         <div class="select-title"><span>絞り込み:</span><span class="currentvalue">すべて</span><span class="arrow"></span></div>
         <ul class="select-options">
@@ -53,24 +47,31 @@
       <div class="page">
         <button id="prev-btn">前へ</button>
         <div class="currentpage">
-          <label for="pc-only">
+          <div id="pc">
+            <label for="pc-only">
+              <p>Page</p>
+            </label>
+            <input type="text" id="pc-only" mode="numeric" >
+          </div>
+          <!-- <select id="select"></select> -->
+          <div id="selectpage">
             <p>Page</p>
-          </label>
-          <input type="text" id="pc-only" mode="numeric" >
-          <select id="select"></select>
+            <span id="selected">1</span><span class="pagearrow"></span>
+            <ul id="select"></ul>
+          </div>
         </div>
         <button id="next-btn">次へ</button>
       </div>
     </div>
   <!-- 学習したフレーズを表形式で表示 -->
     <table>
-      <colgroup><col style="width: 25%;"><col style="width: 25%;"><col style="width:20%;"><col style="width:20%;"><col style="width: 10%;"></colgroup>
+      <colgroup id="colgroup"><col style="width: 25%;"><col style="width: 25%;"><col style="width:20%;"><col style="width:18%;"><col style="width: 12%;"></colgroup>
       <thead id="thead">
         <tr>
           <th><button id="visiword">Word</button></th>
           <th><button id="visimeanings">Meanings</button></th>
           <th>Status</th>
-          <th>Date</th>
+          <th class="date">Date</th>
           <th>Delete</th>
         </tr>
       </thead>
@@ -82,9 +83,10 @@
   <div id="modal-delete">
     <div id="delete-content">
       <p>本当に削除しますか？</p>
+      <p>このデータは元に戻せません</p>
       <div class="btns">
         <button id="del-btn" class="del-btn">削除</button>
-        <button id="cancel-btn" class="cancel-btn">やめる</button>
+        <button id="cancel-btn" class="cancel-btn">閉じる</button>
       </div>
     </div>
   </div>

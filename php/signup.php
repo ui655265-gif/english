@@ -2,11 +2,6 @@
 session_start();
 header('Content-Type: application/json; charset=UTF-8');
 require_once('dbconnect.php');
-if (!isset($pdo)) {
-    // もしここで止まるなら、読み込み自体ができていない証拠！
-    echo json_encode(["status" => "error", "message" => "dbconnect.phpが読み込めていません"]);
-    exit();
-}
 $response = [];
 
 $username = $_POST['username'];

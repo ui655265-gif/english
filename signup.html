@@ -29,21 +29,35 @@
       </form>
       <p>例: curve - 曲線</p>
     </div>
-    <select name="filter" id="filter">
-      <option value="all">すべて</option>
-      <option value="weak">苦手なもの</option>
-      <option value="forget">今日復習すべきもの</option>
-    </select>
-    <select name="type" id="type">
-      <option value="all">すべて</option>
-      <option value="word">単語</option>
-      <option value="phrase">イディオム</option>
-    </select>
-    <span id="total"></span>
-    <button id="prev-btn">前へ</button>
-    <input type="text" id="pc-only" mode="numeric" >
-    <select id="select"></select>
-    <button id="next-btn">次へ</button>
+   
+    <div class="filter-content">
+      <div id="filter">
+        <div class="select-title"><span>絞り込み:</span><span class="currentvalue">すべて</span><span class="arrow"></span></div>
+        <ul class="select-options">
+          <li class="options" data-value="all">すべて</li>
+          <li class="options" data-value="learning">学習中</li>
+          <li class="options" data-value="weak">苦手</li>
+          <li class="options" data-value="forget">要復習</li>
+        </ul>
+      </div>
+      <div id="type">
+        <input type="radio" name="type" value="all" id="all" checked><label for="all">すべて</label>
+        <input type="radio" name="type" value="word" id="word"><label for="word">単語</label>
+        <input type="radio" name="type" value="phrase" id="phrase"><label for="phrase">熟語</label>
+      </div>
+      <span id="total"></span>
+      <div class="page">
+        <button id="prev-btn">前へ</button>
+        <div class="currentpage">
+          <label for="pc-only">
+            <p>Page</p>
+          </label>
+          <input type="text" id="pc-only" mode="numeric" >
+          <select id="select"></select>
+        </div>
+        <button id="next-btn">次へ</button>
+      </div>
+    </div>
   <!-- 学習したフレーズを表形式で表示 -->
     <table>
       <thead>
@@ -65,7 +79,7 @@
       <form id="signup-form">
         <p>Sign Up</p>
         <dl>
-          <dt><label for="name">ユーザー名</label></dt>
+          <dt><label for="username">ユーザー名</label></dt>
           <dd><input type="text" name="username" id="username" placeholder="Enter Your Username"></dd>
         </dl>
         <dl>

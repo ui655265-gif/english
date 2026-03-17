@@ -176,6 +176,7 @@ html {
   font-size: 0.9rem;
   color: #3498db;
   transition: color 0.2s;
+  background-color: #Fff;
 }
 
 #login-content a p:hover {
@@ -262,7 +263,7 @@ body main #applyspace {
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
-  width: 620px;
+  width: 600px;
   margin: 10px auto;
   padding: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
@@ -456,7 +457,7 @@ input[type="radio"]:checked+label {
   align-items: center;
   gap: 10px;
 }
-#select {
+#selectpage {
   display: none;
 }
 #pc-only {
@@ -471,19 +472,25 @@ input[type="radio"]:checked+label {
   display: inline;
 }
 #prev-btn, #next-btn {
-  padding: 2px 8px;
   border-radius: 12px;
   background-color: var(--curvage-navy);
   color: #FFF;
   border: none;
   outline: none;
+  font-size: 14px;
+  cursor: pointer;
 }
 #prev-btn {
-  padding: 2px 8px 2px 20px;
+  padding: 2px 8px 4px 20px;
   background-image: url(../images/left.svg);
   background-repeat: no-repeat;
-  background-position: left;
-
+  background-position: left top 1px;
+}
+#next-btn {
+  padding: 2px 20px 4px 8px;
+  background-image: url(../images/right.svg);
+  background-repeat: no-repeat;
+  background-position: right top 1px;
 }
 .delete-btn {
   width: 24px;
@@ -510,7 +517,6 @@ thead tr {
   border-radius: 12px;
 }
 thead tr th {
-  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); */
   background-color: #E2E5EB;
   line-height: 2.5;
   font-size: 14px;
@@ -534,7 +540,7 @@ tbody tr {
   background-color: #fff;
   width: 600px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+  border-radius: 12px;
   opacity: 0;
 }
 tbody tr.visible {
@@ -577,9 +583,6 @@ tbody tr td {
   border-bottom: rgba(0, 0, 0, 0.1) 1px solid;
   transform: translateY(40px);
 }
-.date {
-  font-size: 12px;
-}
 .status {
   color: #fff;
   width: 70px;
@@ -601,4 +604,177 @@ tbody tr td {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#delete-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+}
+#delete-content p {
+  text-align: center;
+  background-color: #FFF;
+}
+#delete-content p {
+  font-size: 12px;
+  color: #888;
+}
+#delete-content p:first-child {
+  background-image: url(../images/warning.svg);
+  background-repeat: no-repeat;
+  background-position: left 30px top 15px;
+  background-size: 30px 30px;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 15px 30px 10px 60px;
+  display: inline;
+  color: #333;
+}
+#delete-content .btns {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding-top: 40px;
+  background-color: #FFF;
+}
+#del-btn {
+  background-color: rgb(229, 115, 115);
+  color: #FFf;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 10px 28px;
+  outline: none;
+  border: rgb(229, 115, 115) 2px solid;
+  font-size: 16px;
+  border-radius: 4px;
+}
+#cancel-btn {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  outline: none;
+  border: rgba(0, 0, 0, 0.1) 2px solid;
+  font-size: 16px;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  #total {
+    font-size: 12px;
+  }
+  #pc {
+    display: none;
+  }
+  #selectpage {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 13px
+  }
+  #select {
+    display: none;
+    list-style-type: none;
+    z-index: 2;
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: 3ch;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    padding: 4px 0;
+    border: var(--curvage-navy) 1px solid;
+  }
+  #select li {
+    padding: 2px 6px;
+    cursor: pointer;
+  }
+  #select li:hover {
+    background-color: rgba(26, 36, 92, 0.2);
+  }
+  #selectpage.page-open #select {
+    display: inline;
+  }
+  .currentpage {
+    position: relative;
+  }
+  #selected {
+    display: inline-block;
+    width: 3ch;
+    text-align: center;
+    border-bottom: var(--curvage-navy) 1px solid;
+  }
+  #prev-btn {
+  background-position: center center;
+  display: inline-block;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  }
+  #next-btn {
+    background-position: center center;
+    display: inline-block;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+  }
+}
+@media (max-width: 599px) {
+  header button {
+    right: 10px;
+    top: 10px;
+  }
+  body main #applyspace, body main .filter-content, body main table {
+    width: 98%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  main #apply {
+    gap: 20px;
+  }
+  main #apply dl {
+    width: 40%;
+  }
+  main #apply dd input[type='text'] {
+    width: 100%;
+  }
+  #filter {
+    width: 30%;
+  }
+  #type {
+    width: 30%;
+  }
+  #total {
+    width: 10%;
+  }
+}
+@media (max-width:480px) {
+  .filter-content {
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 70px;
+  }
+  .select-title {
+    flex-direction: row;
+  }
+  #filter {
+    width: 45%;
+  }
+  #type {
+    width: 45%;
+  }
+  #total {
+    width: 15%;
+    margin-left:  auto;
+    font-size: 16px;
+  }
+  #selectpage {
+    font-size: 16px;
+  }
+  main div #register {
+    width: 60px;
+  }
+  .page {
+    margin-right: auto;
+  }
+  .date {
+    display: none;
+  }
 }
