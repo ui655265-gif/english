@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'session.php';
 
 // 1. セッション変数をクリア
 $_SESSION = array();

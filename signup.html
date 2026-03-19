@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
+  <link rel="shortcut icon" href="/favicons/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Curvage" />
+  <link rel="manifest" href="/favicons/site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -80,15 +86,15 @@
         <p>Sign Up</p>
         <dl>
           <dt><label for="username">ユーザー名</label></dt>
-          <dd><input type="text" name="username" id="username" placeholder="Enter Your Username"></dd>
+          <dd><input type="text" name="username" id="username" placeholder="3〜15文字の半角英数字(小文字・_可)" inputmode="email" autocapitalize="none" spellcheck="false"></dd>
         </dl>
         <dl>
           <dt><label for="password">パスワード</label></dt>
-          <dd><input type="password" name="password" id="password" placeholder="Enter Your Password"></dd>
+          <dd><input type="password" name="password" id="password" placeholder="英字・数字・記号を組み合わせた8文字以上"></dd>
         </dl>
         <dl>
           <dt><label for="repassword">パスワード(確認用)</label></dt>
-          <dd><input type="password" name="repassword" id="repassword" placeholder="Enter Your Password"></dd>
+          <dd><input type="password" name="repassword" id="repassword" placeholder="英字・数字・記号を組み合わせた8文字以上"></dd>
         </dl>
         <span id="sign-status"></span>
         <button type="submit" id="signup-sub"><span id="btntxt">Sign Up</span><div id="spinner"></div><span id="checkicon"></span></button>

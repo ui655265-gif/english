@@ -1,10 +1,12 @@
 <?php 
 require __DIR__ . '/../vendor/autoload.php';
-  $dsn = "mysql:host=localhost;dbname=my_english_vocab;charset=utf8mb4";
   $dotenv = Dotenv\Dotenv::createImmutable(__DIR__. '/../');
   $dotenv->load();
+  $host = $_ENV['DB_HOST'];
+  $name = $_ENV['DB_NAME'];
   $user = $_ENV['DB_USER'];
   $password = $_ENV['DB_PASS'];
+  $dsn = "mysql:host=$host;dbname=$name;charset=utf8mb4";
 
 try {
   $pdo = new PDO($dsn, $user, $password);

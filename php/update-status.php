@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once('dbconnect.php');
+require_once 'session.php';
+require_once 'dbconnect.php';
 
 $now = date('Y-m-d H:i:s');
 

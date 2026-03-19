@@ -2,7 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
+  <link rel="shortcut icon" href="/favicons/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Curvage" />
+  <link rel="manifest" href="/favicons/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -18,7 +25,7 @@
       <form id="apply">
         <dl>
           <dt><label for="add-words">Word</label></dt>
-          <dd><input type="text" name="words" id="add-words" placeholder="単語を入力…" required></dd>
+          <dd><input type="text" name="words" id="add-words" placeholder="単語を入力…" inputmode="email" autocapitalize="none" required></dd>
         </dl>
         <dl>
           <dt><label for="add-meanings">Meanings</label></dt>
@@ -45,7 +52,7 @@
       </div>
       <span id="total"></span>
       <div class="page">
-        <button id="prev-btn">前へ</button>
+        <button id="prev-btn"></button>
         <div class="currentpage">
           <div id="pc">
             <label for="pc-only">
@@ -60,7 +67,7 @@
             <ul id="select"></ul>
           </div>
         </div>
-        <button id="next-btn">次へ</button>
+        <button id="next-btn"></button>
       </div>
     </div>
   <!-- 学習したフレーズを表形式で表示 -->

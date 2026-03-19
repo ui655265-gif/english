@@ -11,8 +11,8 @@ async function Sinup(event) {
   const password = document.getElementById('password');
   const repassword = document.getElementById('repassword');
   const form = event.currentTarget;
-  if (username.value.length < 4) {
-    alert('ユーザー名は4文字以上で入力してください');
+  if (username.value.length < 3) {
+    alert('ユーザー名は3文字以上で入力してください');
     form.reset();
     return;
   }

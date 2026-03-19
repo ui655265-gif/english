@@ -1,13 +1,13 @@
 <?php
-session_start();
+require_once 'session.php';
 header('Content-Type: application/json; charset=UTF-8');
-require_once('dbconnect.php');
+require_once 'dbconnect.php';
 $response = [];
 
-$username = $_POST['username'];
+$username = strtolower(trim($_POST['username']));
 $password = $_POST['password'];
 
-if (mb_strlen($username)<4 || !preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/', $password)) {
+if (!preg_match('/^[a-z0-9_]{3,15}$/', $username) || !preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password)) {
   $response['status'] = 'error';
   $response['message'] = '条件を満たしていません';
   echo json_encode($response);

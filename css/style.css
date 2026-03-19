@@ -6,6 +6,9 @@
 html {
   scrollbar-gutter: stable;
 }
+html, body {
+  touch-action: manipulation;
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -90,10 +93,13 @@ html {
   outline: none;
   margin-bottom: 20px;
 }
-#modal-login input[type="text"]::placeholder, #modal-login input[type="password"]::placeholder,
-#modal-signup input[type="text"]::placeholder, #modal-signup input[type="password"]::placeholder {
+#modal-login input[type="text"]::placeholder, #modal-login input[type="password"]::placeholder {
   font-size: 14px;
   font-weight: 300
+}
+#modal-signup input[type="text"]::placeholder, #modal-signup input[type="password"]::placeholder {
+  font-size: 12px;
+  font-weight: 300;
 }
 /* クリックした時に青く光らせる */
 #modal-login input:focus,
@@ -238,6 +244,10 @@ main #apply input[type="text"] {
   padding: 15px 27px;
   border: #888 1px solid;
   outline: none;
+  font-size: 16px;
+}
+main #apply input[type="text"]::placeholder {
+  font-size: 14px;
 }
 main #apply #add-words {
   background-image: url(../images/penicon.svg);
@@ -600,6 +610,9 @@ tbody tr td {
 .learned {
   background-color: var(--curvage-navy);
 }
+.date {
+  font-size: 13px;
+}
 .delete {
   display: flex;
   justify-content: center;
@@ -746,6 +759,9 @@ tbody tr td {
   }
 }
 @media (max-width:480px) {
+  main #apply input[type="text"]::placeholder {
+    font-size: 12px;
+  }
   .filter-content {
     flex-wrap: wrap;
     gap: 10px;

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'session.php';
 $response = [];
 if (isset($_SESSION['id'])) {
   $response["logstatus"] = true;
