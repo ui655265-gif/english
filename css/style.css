@@ -193,7 +193,7 @@ html, body {
 #log-status {
   color: #FF6B6B;
 }
-#modal-signup p {
+#modal-signup #SignUpTitle {
   color: #1A245C;
   font-size: 30px;
   text-align: center;
@@ -205,12 +205,26 @@ html, body {
   right: 40px;
   top: 30px;
 }
-#modal-signup p::before {
+#modal-signup #SignUpTitle::before {
   content: "";
   width: 1px;
   border: var(--curvage-navy) 1px solid;
   height: 40px;
   margin-right: 30px;
+}
+#modal-signup a {
+  text-decoration: none;
+  display: inline-block;
+}
+#modal-signup a p {
+  font-size: 0.9rem;
+  color: #3498db;
+  transition: color 0.2s;
+  background-color: #Fff;
+}
+#modal-signup a p:hover {
+  color: #21618c;
+  text-decoration: underline;
 }
 header h1 {
   height: 100px;
@@ -305,6 +319,9 @@ body main #applyspace #example {
   font-size: 12px;
   background-color: #fff;
   display: inline;
+}
+main #applyspace > div {
+  background-color: white;
 }
 body main #applyspace #applycancel {
   display: none;
