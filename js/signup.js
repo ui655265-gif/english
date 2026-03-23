@@ -6,7 +6,7 @@ window.onload = async function () {
 
 async function Sinup(event) {
   event.preventDefault(); // 画面遷移を止める
-  const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const passRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
   const username = document.getElementById('username');
   const password = document.getElementById('password');
   const repassword = document.getElementById('repassword');

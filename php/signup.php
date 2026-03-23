@@ -7,7 +7,7 @@ $response = [];
 $username = strtolower(trim($_POST['username']));
 $password = $_POST['password'];
 
-if (!preg_match('/^[a-z0-9_]{3,15}$/', $username) || !preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password)) {
+if (!preg_match('/^[a-z0-9_]{3,15}$/', $username) || !preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/', $password)) {
   $response['status'] = 'error';
   $response['message'] = '条件を満たしていません';
   echo json_encode($response);

@@ -4,7 +4,7 @@ let CurrentFilter = 'all';
 let CurrentType = 'all';
 const dbUpdateTimers = {};
 let Allitems = [];
-let prev, next, Jump, MaxPage, LogCheck;
+let prev, next, Jump, MaxPage, LogCheck, applyspace, applycancel;
 window.onload = async function () {
   // ログインするイベント登録
   const login = document.getElementById('log-form');
@@ -124,6 +124,8 @@ async function initapp() {
   // ログアウト機能
   const logout = document.getElementById('log-out');
   logout.addEventListener('click', LogOut);
+  applyspace = document.getElementById('applyspace');
+  applycancel = document.getElementById('applycancel');
   const mediaquery768 = window.matchMedia('(max-width:768px)')
   mediaquery768.addEventListener('change', Widthchange768)
   const mediaquery480 = window.matchMedia('(max-width:480px)')
@@ -513,11 +515,17 @@ function Widthchange768(e) {
     next.textContent = '次へ';
     prev.textContent = '前へ';
   }
-} function Widthchange480(e) {
+}
+function Widthchange480(e) {
   const colgroup = document.getElementById('colgroup');
   if (e.matches) {
-    colgroup.innerHTML = '<col style="width: 34%;"><col style="width: 34%;"><col style="width:20%;"><col style="width:18%;">'
+    colgroup.innerHTML = '<col style="width: 34%;"><col style="width: 34%;"><col style="width:20%;"><col style="width:18%;">';
+    applyspace.onclick = () => { applyspace.classList.add('open-apply'); };
+    applycancel.onclick = (e) => {
+      e.stopPropagation();
+      applyspace.classList.remove('open-apply');
+    };
   } else {
-    colgroup.innerHTML = '<col style="width: 25%;"><col style="width: 25%;"><col style="width:20%;"><col style="width:18%;"><col style="width: 12%;"></col>'
+    colgroup.innerHTML = '<col style="width: 25%;"><col style="width: 25%;"><col style="width:20%;"><col style="width:18%;"><col style="width: 12%;"></col>';
   }
 } 

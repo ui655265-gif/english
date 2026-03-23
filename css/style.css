@@ -18,6 +18,7 @@ html, body {
   font-family: "Montserrat", "Zen Kaku Gothic New", sans-serif;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 }
 #modal-login,
 #modal-delete,
@@ -237,6 +238,9 @@ main #apply {
   justify-content: center;
   background-color: #fff;
 }
+#addnewword {
+  display: none;
+}
 main #apply input[type="text"] {
   height: 35px;
   width: 205px;
@@ -296,11 +300,14 @@ main #apply div {
   justify-content: flex-end;
   background-color: #fff;
 }
-body main #applyspace p {
+body main #applyspace #example {
   color: #888;
   font-size: 12px;
   background-color: #fff;
   display: inline;
+}
+body main #applyspace #applycancel {
+  display: none;
 }
 body main #applyspace dt,
 body main #applyspace label {
@@ -759,6 +766,86 @@ tbody tr td {
   }
 }
 @media (max-width:480px) {
+  body main #applyspace {
+    background-color: var(--curvage-navy);
+    width: 40%;
+    height: 40px;
+    justify-content: center;
+    transition: all .4s ease;
+    overflow: hidden;
+  }
+  main #applyspace #addnewword {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    color: white;
+    background-color: var(--curvage-navy);
+    transition: all .2s ease .4s;
+    line-height: 2;
+  }
+  main #applyspace #apply {
+    visibility: hidden;
+    max-height: 0;
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity .2s ease .4s;
+  }
+  body main #applyspace #example {
+    display: none;
+  }
+  main #applyspace > div {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s ease .4s;
+  }
+  body main #applyspace.open-apply {
+    background-color: white;
+    width: 98%;
+    height: 200px;
+  }
+  main #applyspace.open-apply #addnewword {
+    visibility: hidden;
+    opacity: 0;
+    max-width: 0;
+    max-height: 0;
+  }
+  body main #applyspace.open-apply #example {
+    display: inline-block;
+    width: 40%;
+  }
+  main #applyspace.open-apply #apply {
+    visibility: visible;
+    opacity: 1;
+    flex-direction: column;
+    gap: 5px;
+    flex-wrap: wrap;
+    max-height: 130px;
+    justify-content: flex-end;
+    max-width: 100%;
+    width: 100%;
+    align-content: space-between;
+  }
+  main #applyspace.open-apply #apply dl {
+    height: calc((100% - 5px) / 2);
+    width: 80%;
+  }
+  main #applyspace.open-apply > div {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    opacity: 1;
+    visibility: visible;
+  }
+  main #applyspace.open-apply #applycancel {
+    display: inline-block;
+    width: 60px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border: var(--curvage-navy) 2px solid;
+    margin-top: 10px;
+  }
   main #apply input[type="text"]::placeholder {
     font-size: 12px;
   }
@@ -786,6 +873,7 @@ tbody tr td {
   }
   main div #register {
     width: 60px;
+    border: var(--curvage-navy) 2px solid;
   }
   .page {
     margin-right: auto;

@@ -27,11 +27,12 @@
 </head>
 <body>
   <header>
-    <h1><img src="images/Curvagelogo.png" alt="この学習アプリ'Curvage'のロゴ"></h1>
+    <h1><img src="images/Curvagelogo.png" alt="Curvage"></h1>
     <button id="log-out">ログアウト</button>
   </header>
   <main>
     <div id="applyspace">
+      <p id="addnewword">＋単語登録</p>
       <form id="apply">
         <dl>
           <dt><label for="add-words">Word</label></dt>
@@ -43,7 +44,10 @@
         </dl>
         <div><input type="submit" id="register" value="登録"></div>
       </form>
-      <p>例: curve - 曲線</p>
+      <div>
+        <p id="example">例: curve - 曲線</p>
+        <button id="applycancel">閉じる</button>
+      </div>
     </div>
     <div class="filter-content">
       <div id="filter">
