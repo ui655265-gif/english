@@ -157,8 +157,8 @@ function tableset(items) {
   display.forEach(element => {
     let rowHTML = `
     <tr class="${element.type === '0' ? 'type-word' : 'type-phrase'}">
-      <td class="words"><button class="appwords"><span>${h(element.words)}</span></button></td>
-      <td class="meanings"><button class="appmeanings"><span>${h(element.meanings)}</span></button></td>
+      <td class="words"><button class="appwords"><span class="reveal">表示</span><span class="hidden">${h(element.words)}</span></button></td>
+      <td class="meanings"><button class="appmeanings"><span class="reveal">表示</span><span class="hidden">${h(element.meanings)}</span></button></td>
       <td><button class="status ${element.status === 1 ? 'weak' : (element.status === 2 ? 'learned' : 'learning')}" data-id="${element.id}" data-status="${element.status}">${element.status === 1 ? 'Weak' : (element.status === 2 ? 'Learned' : 'Learning')}</button></td>
       <td class="date">${(element.date)}</td>
       <td class="delete"><button class="delete-btn" data-id="${element.id}"></button></td>
