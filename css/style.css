@@ -643,6 +643,9 @@ tbody tr .appmeanings .reveal, tbody tr .appwords .reveal {
   background-repeat: no-repeat;
   background-position: left 25px center;
 }
+tbody.reveal-no-animation tr .appmeanings .reveal, tbody.reveal-no-animation tr .appwords .reveal {
+  transition: none;
+}
 tbody tr .appmeanings.hide .reveal, tbody tr .appwords.hide .reveal {
   visibility: visible;
   transform: translateY(0);

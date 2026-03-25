@@ -4,7 +4,7 @@ let CurrentFilter = 'all';
 let CurrentType = 'all';
 const dbUpdateTimers = {};
 let Allitems = [];
-let prev, next, Jump, MaxPage, LogCheck, applyspace, applycancel;
+let prev, next, Jump, MaxPage, LogCheck, applyspace, applycancel,tbody;
 window.onload = async function () {
   // ログインするイベント登録
   const login = document.getElementById('log-form');
@@ -115,7 +115,7 @@ async function initapp() {
   const apply = document.getElementById('apply')
   apply.addEventListener('submit', HandleFormData);
 //苦手切り替えのイベント登録
-  const tbody = document.getElementById('tbody');
+  tbody = document.getElementById('tbody');
   tbody.addEventListener('click', ChangeStatus);
   //削除ボタンのイベント登録
   tbody.addEventListener('click', Delete);
@@ -487,20 +487,25 @@ function Changevisi(items, button) {
     });
   } else {
     button.disabled = false;
+    tbody.classList.add('reveal-no-animation');
     items.forEach(item => {
       item.classList.remove('hide');
     });
+    void tbody.offsetWidth;
+    tbody.classList.remove('reveal-no-animation');
   }
 }
 function Appierwords(event) {
   let appwords = event.target.closest('.appwords');
   if (!appwords) return;
   appwords.classList.remove('hide');
+  checkwordhide();
 }
 function Appiermeanings(event) {
   let appmeanings = event.target.closest('.appmeanings');
   if (!appmeanings) return;
   appmeanings.classList.remove('hide');
+  checkmeaninghide();
 }
 function h(s) {
   if (typeof s !== 'string') return s;
@@ -528,4 +533,16 @@ function Widthchange480(e) {
   } else {
     colgroup.innerHTML = '<col style="width: 25%;"><col style="width: 25%;"><col style="width:20%;"><col style="width:18%;"><col style="width: 12%;"></col>';
   }
-} 
+}
+function checkwordhide() {
+  const words = document.querySelectorAll('.appwords');
+  let visimeanings = document.getElementById('visimeanings');
+  const checkallhide = Array.from(words).every(item => !item.classList.contains('hide'));
+  if (checkallhide) visimeanings.disabled = false;
+}
+function checkmeaninghide() {
+  const meanings = document.querySelectorAll('.appmeanings');
+  let visiword = document.getElementById('visiword');
+  const checkallhide = Array.from(meanings).every(item => !item.classList.contains('hide'));
+  if (checkallhide) visiword.disabled = false;
+}
