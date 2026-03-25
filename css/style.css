@@ -574,7 +574,28 @@ thead tr th button {
   outline: none;
   width: 100%;
   height: 28px;
+  text-align: left;
+  padding-left: 12px;
+}
+thead tr th button .th {
   font-weight: 800;
+  background-color: transparent;
+  position: relative;
+}
+thead tr th button .eye {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  background-image: url(../images/visibility.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  position: absolute;
+  right: -20px;
+  top: 2px;
+}
+thead tr th button.visibilityoff .eye {
+  background-image: url(../images/visibilityoff.svg);
 }
 tbody tr {
   background-color: transparent;

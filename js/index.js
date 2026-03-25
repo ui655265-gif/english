@@ -248,8 +248,8 @@ function RefreshUI() {
   const meanings = document.querySelectorAll('.appmeanings');
   if (visiword.disabled) meanings.forEach(meaning => { meaning.classList.add('hide') });
   if (visimeanings.disabled) words.forEach(word => { word.classList.add('hide') });
-  visiword.onclick = () => Changevisi(words, visimeanings);
-  visimeanings.onclick = () => Changevisi(meanings, visiword);
+  visiword.onclick = () => Changevisi(words, visimeanings, visiword);
+  visimeanings.onclick = () => Changevisi(meanings, visiword, visimeanings);
 }
 // 苦手ボタンを押すとweak=1になる(デフォルトは0)ボタンを押したタイミングを学習日としてapiに送信する
 //weakの値で場合分け、weak=0の場合登録日を参照して日数判定する
@@ -479,18 +479,20 @@ function Fadein(items) {
       observer.observe(item);
   });
 }
-function Changevisi(items, button) {
+function Changevisi(items, button, me) {
   if (!button.disabled) {
     button.disabled = true;
     items.forEach(item => {
       item.classList.add('hide');
     });
+    me.classList.add('visibilityoff');
   } else {
     button.disabled = false;
     tbody.classList.add('reveal-no-animation');
     items.forEach(item => {
       item.classList.remove('hide');
     });
+    me.classList.remove('visibilityoff');
     void tbody.offsetWidth;
     tbody.classList.remove('reveal-no-animation');
   }
@@ -537,12 +539,20 @@ function Widthchange480(e) {
 function checkwordhide() {
   const words = document.querySelectorAll('.appwords');
   let visimeanings = document.getElementById('visimeanings');
+  let visiword = document.getElementById('visiword');
   const checkallhide = Array.from(words).every(item => !item.classList.contains('hide'));
-  if (checkallhide) visimeanings.disabled = false;
+  if (checkallhide) {
+    visimeanings.disabled = false;
+    visiword.classList.remove('visibilityoff');
+  }
 }
 function checkmeaninghide() {
   const meanings = document.querySelectorAll('.appmeanings');
   let visiword = document.getElementById('visiword');
+  let visimeanings = document.getElementById('visimeanings');
   const checkallhide = Array.from(meanings).every(item => !item.classList.contains('hide'));
-  if (checkallhide) visiword.disabled = false;
+  if (checkallhide) {
+    visiword.disabled = false;
+    visimeanings.classList.remove('visibilityoff');
+  }
 }
