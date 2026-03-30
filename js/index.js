@@ -38,6 +38,14 @@ async function Check() {
   }
   initapp();
 };
+function RemoveClass(el) {
+  if (el.value.trim() !== '') {
+    el.classList.remove('error');
+  };
+  if (el.value.trim() === '') {
+    el.classList.add('error')
+  };
+}
 async function initapp() {
   //データの読み取り
   await loadenglish();
@@ -439,14 +447,6 @@ async function Login(event) {
 async function LogOut() {
   await fetch("php/logout.php");
   Check();
-}
-function RemoveClass(el) {
-  if (el.value.trim() !== '') {
-    el.classList.remove('error');
-  };
-  if (el.value.trim() === '') {
-    el.classList.add('error')
-  };
 }
 window.addEventListener('pagehide', () => {
   Object.keys(dbUpdateTimers).forEach(id => {
